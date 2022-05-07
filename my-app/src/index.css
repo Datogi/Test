@@ -2,13 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-select{
-   margin: auto;
-   margin-top: 12px;
-   width: 100%;
+select {
+  margin: auto;
+  margin-top: 12px;
+  width: 100%;
 }
-button{
-   margin-left: 100px;
-   margin-top: 50px;
-   
+button {
+  margin-left: 100px;
+  margin-top: 50px;
 }

@@ -2,7 +2,14 @@ import { useState } from "react";
 import Question from "./Question";
 
 /* This example requires Tailwind CSS v2.0+ */
-export default function Categories({ name, index, setButton, setQuestions }) {
+export default function Categories({
+  name,
+  index,
+  setButton,
+  setQuestions,
+  url,
+  category,
+}) {
   let [number, setNumber] = useState(true);
   async function fetchData(url) {
     const data = await fetch(url);
@@ -24,24 +31,23 @@ export default function Categories({ name, index, setButton, setQuestions }) {
  <option value="hard">Hard</option>
 </select>
 <select id="888" name="trivia_type" class="form-control">&gt;
-	<option value="any">Any Type</option>
+	<option value="">Any Type</option>
 	<option value="multiple">Multiple Choice</option>
 	<option value="boolean">True / False</option>
 </select>
 `;
     document.getElementById(index + "button").classList.remove("hidden");
   }
-
   return (
     <button
       onClick={() => {
         number && hide(index);
       }}
       type="button"
-      className=" bg-gray-400 border-2 border-gray-300 border-dashed rounded-lg p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black"
+      className={`bg-${url} bg-cover  border-2 border-gray-300 border-dashed rounded-lg p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black`}
     >
       <div id={index}>
-        <span className="mt-2 block text-sm font-medium text-gray-900">
+        <span className="mt-2 block text-sm font-medium text-white">
           {name}
         </span>
       </div>
@@ -49,11 +55,13 @@ export default function Categories({ name, index, setButton, setQuestions }) {
         id={index + "button"}
         onClick={() => {
           document.querySelector(".categories").classList.add("hidden");
+          const difficulty = document.getElementById("999").value;
+          const type = document.getElementById("888").value;
           fetchData(
-            `https://opentdb.com/api.php?amount=10&category=11&difficulty=medium&type=multiple`
+            `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=${type}`
           );
         }}
-        className="-ml-1 mr-2 hidden start"
+        className="-ml-1 mr-2 hidden start text-white"
       >
         Start Test
       </button>
