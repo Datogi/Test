@@ -12,6 +12,8 @@ module.exports = {
         6: "url('https://wallpaperaccess.com/full/2081074.jpg')",
         7: "url('https://s3.envato.com/files/05186782-1f47-43c0-97a3-fc90441a15b6/inline_image_preview.jpg')",
         8: "url('https://cdn4.vectorstock.com/i/1000x1000/28/73/neon-lettering-quiz-on-a-brick-wall-background-vector-24642873.jpg')",
+        9: "url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRd57i8ku8lUrKv8_6lrkMxBd-sdm4QtpogGQ&usqp=CAU')",
+        10: "url('')",
       }),
     },
   },

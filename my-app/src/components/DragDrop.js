@@ -1,28 +1,8 @@
+import React from "react";
 import { useState } from "react";
-import Question from "./Question";
 
-/* This example requires Tailwind CSS v2.0+ */
-export default function Categories({
-  name,
-  index,
-  setButton,
-  setQuestions,
-  url,
-  category,
-}) {
-  console.log(index);
+function DragDrop({ index }) {
   let [number, setNumber] = useState(true);
-  async function fetchData(url) {
-    const data = await fetch(url);
-    if (data.status == 200) {
-      const res = await data.json();
-      setQuestions(res.results);
-      setButton(true);
-    } else {
-      setQuestions([]);
-      return [];
-    }
-  }
 
   function hide(index) {
     console.log("a");
@@ -46,11 +26,11 @@ export default function Categories({
         onClick={() => {
           number && hide(index);
         }}
-        className={`bg-${url} w-60 bg-cover ml-3  h-40 border-2 border-gray-300 border-dashed rounded-lg p-10 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black`}
+        className={`bg-10 w-60 bg-cover ml-3  h-40 border-2 border-gray-300 border-dashed rounded-lg p-10 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black`}
       >
         <div id={index}>
           <span className="mt-2 block text-sm font-medium text-white">
-            {name}
+            DragDrop
           </span>
           <select className="hidden" id="999">
             <option value="easy">Easy</option>
@@ -62,11 +42,9 @@ export default function Categories({
           id={index + "button"}
           onClick={() => {
             document.querySelector(".categories").classList.add("hidden");
-            document.querySelector(".Drag").classList.add("hidden");
+            document.querySelector(".Drag")?.classList.add("hidden");
+            document.querySelector(".DragDroping")?.classList.remove("hidden");
             const difficulty = document.getElementById("999").value;
-            fetchData(
-              `https://opentdb.com/api.php?amount=10&category=${category}&difficulty=${difficulty}&type=multiple`
-            );
           }}
           className="-ml-1 mr-2  hidden start text-white"
         >
@@ -76,3 +54,5 @@ export default function Categories({
     </div>
   );
 }
+
+export default DragDrop;
